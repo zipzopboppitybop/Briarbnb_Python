@@ -16,7 +16,7 @@ class Spot(db.Model):
     country = db.Column(db.String(100), nullable=False)
     lat = db.Column(db.Float, nullable=False)
     lng = db.Column(db.Float, nullable=False)
-    description = db.Column(db.String(255), nullable=False)
+    description = db.Column(db.String(1000), nullable=False)
     price = db.Column(db.Float, nullable=False)
     created_at = db.Column(db.DateTime, server_default=db.func.now())
     updated_at = db.Column(db.DateTime, server_default=db.func.now(), server_onupdate=db.func.now())
