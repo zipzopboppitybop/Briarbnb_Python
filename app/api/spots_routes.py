@@ -21,6 +21,10 @@ def spot(id):
     Query for one spot and return it in a spot dictionary
     """
     spot = Spot.query.get(id)
+
+    if spot is None:
+        return {'errors': 'Spot does not exist'}, 404
+
     return spot.to_dict()
 
 
@@ -53,3 +57,22 @@ def create_spot():
 
     if form.errors:
         return {'errors': validation_errors_to_error_messages(form.errors)}, 400
+    
+@spot_routes.route('/<id>/delete', methods=['DELETE'])
+@login_required
+def delete_spot(id):
+    """
+    Delete a Spot 
+    """
+    user = current_user.to_dict()
+    spot = Spot.query.get(id)
+
+    if spot is None:
+        return {'errors': 'Spot does not exist'}, 404
+
+    if user['id'] != spot.owner_id:
+        return {'errors': 'You do not have permission to delete this spot!'}, 403
+
+    db.session.delete(spot)
+    db.session.commit()
+    return {'message': 'Spot deleted successfully'}
