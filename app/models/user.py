@@ -18,7 +18,7 @@ class User(db.Model, UserMixin):
     created_at = db.Column(db.DateTime, server_default=db.func.now())
     updated_at = db.Column(db.DateTime, server_default=db.func.now(), server_onupdate=db.func.now())
 
-    spots = db.relationship('Spot', back_populates='owner')
+    spots = db.relationship('Spot', back_populates='owner', cascade='all, delete-orphan')
 
     @property
     def password(self):
@@ -38,7 +38,7 @@ class User(db.Model, UserMixin):
             'email': self.email,
             'first_name': self.first_name,
             'last_name': self.last_name,
-            'spots': [spot.to_dict() for spot in self.spots],
+            'spots': [spot.id for spot in self.spots],
             'created_at': self.created_at,
             'updated_at': self.updated_at
         }
