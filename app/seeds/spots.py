@@ -13,7 +13,7 @@ def seed_spots():
         country='United States', 
         lat=30.0915,
         lng=-95.9863, 
-        description='Dollar General is proud to be America’s neighborhood general store. We strive to make shopping hassle-free and affordable with more than 15,000 convenient, easy-to-shop stores.', 
+        description='Dollar General is proud to be America`s neighborhood general store. We strive to make shopping hassle-free and affordable with more than 15,000 convenient, easy-to-shop stores.', 
         price=1.00)
     spot2 = Spot(
         name='Lakefront Luxury Villa', 
