@@ -23,6 +23,7 @@ class Spot(db.Model):
 
     owner = db.relationship('User', back_populates='spots')
     reviews = db.relationship('Review', back_populates='spot', cascade='all, delete-orphan')
+    bookings = db.relationship('Booking', back_populates='spot', cascade='all, delete-orphan')
 
     def to_dict(self):
         return {
@@ -38,6 +39,7 @@ class Spot(db.Model):
             'price': self.price,
             'owner': self.owner.to_dict(),
             'reviews': [review.to_dict() for review in self.reviews],
+            'bookings': [booking.to_dict() for booking in self.bookings],
             'created_at': self.created_at,
             'updated_at': self.updated_at
         }

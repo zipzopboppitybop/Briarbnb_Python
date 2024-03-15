@@ -20,6 +20,7 @@ class User(db.Model, UserMixin):
 
     spots = db.relationship('Spot', back_populates='owner', cascade='all, delete-orphan')
     reviews = db.relationship('Review', back_populates='owner', cascade='all, delete-orphan')
+    bookings = db.relationship('Booking', back_populates='owner', cascade='all, delete-orphan')
 
     @property
     def password(self):
@@ -41,6 +42,7 @@ class User(db.Model, UserMixin):
             'last_name': self.last_name,
             'spots': [spot.id for spot in self.spots],
             'reviews': [review.id for review in self.reviews],
+            'bookings': [booking.id for booking in self.bookings],
             'created_at': self.created_at,
             'updated_at': self.updated_at
         }
