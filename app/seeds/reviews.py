@@ -8,24 +8,18 @@ def seed_reviews():
     review1 = Review(
         owner_id=1, 
         spot_id=2,
-        startDate=datetime.datetime(2021, 6 ,1),
-        endDate=datetime.datetime(2021, 6 ,2),
         review='Great place to park and restock on supplies.',
         stars=5
     )
     review2 = Review(
         owner_id=3, 
         spot_id=2,
-        startDate=datetime.datetime(2021, 6 ,1),
-        endDate=datetime.datetime(2021, 6 ,2),
         review='Great place to park and restock on supplies.',
         stars=5
     )
     review3 = Review(
         owner_id=2, 
         spot_id=1,
-        startDate=datetime.datetime(2021, 6 ,1),
-        endDate=datetime.datetime(2021, 6 ,2),
         review='Great place to park and restock on supplies.',
         stars=5
     )

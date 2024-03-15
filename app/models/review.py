@@ -11,8 +11,6 @@ class Review(db.Model):
         add_prefix_for_prod('users.id')), nullable=False)
     spot_id = db.Column(db.Integer, db.ForeignKey(
         add_prefix_for_prod('spots.id')), nullable=False)
-    startDate = db.Column(db.DateTime, nullable=False)
-    endDate = db.Column(db.DateTime, nullable=False)
     review = db.Column(db.String(1000), nullable=False)
     stars = db.Column(db.Integer, nullable=False)
     created_at = db.Column(db.DateTime, server_default=db.func.now())
@@ -26,8 +24,6 @@ class Review(db.Model):
             'id': self.id,
             'owner': self.owner.to_dict(),
             'spot': self.spot.id,
-            'startDate': self.startDate,
-            'endDate': self.endDate,
             'review': self.review,
             'stars': self.stars,
             'created_at': self.created_at,
