@@ -25,7 +25,7 @@ class Review(db.Model):
         return {
             'id': self.id,
             'owner': self.owner.to_dict(),
-            'spot': self.spot.to_dict(),
+            'spot': self.spot.id,
             'startDate': self.startDate,
             'endDate': self.endDate,
             'review': self.review,
