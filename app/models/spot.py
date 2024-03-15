@@ -22,6 +22,7 @@ class Spot(db.Model):
     updated_at = db.Column(db.DateTime, server_default=db.func.now(), server_onupdate=db.func.now())
 
     owner = db.relationship('User', back_populates='spots')
+    reviews = db.relationship('Review', back_populates='spot', cascade='all, delete-orphan')
 
     def to_dict(self):
         return {
@@ -36,6 +37,7 @@ class Spot(db.Model):
             'description': self.description,
             'price': self.price,
             'owner': self.owner.to_dict(),
+            'reviews': [review.id for review in self.reviews],
             'created_at': self.created_at,
             'updated_at': self.updated_at
         }
